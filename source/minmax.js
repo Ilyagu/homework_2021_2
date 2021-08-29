@@ -1,7 +1,14 @@
 'use strict';
 
-const minmax = function(arr){
-  const newarr=arr.replace(/[\\,]/g, '').split(' ').filter(item=>item !== "").map(item=>Number(item)).filter(item=>!isNaN(item));
-  if (newarr.length === 0) return[undefined, undefined]
-  else return [Math.min(...newarr), Math.max(...newarr)]
+/** 
+ * Функция minmax нахожит минимальное и максимальное значение в строке 
+ * результат ввиде массива из минимального и максимального значения.
+*/
+const minmax = arr => {
+  if ((typeof arr) !='string') return [undefined, undefined];
+  let newArr = arr.replace(/[\\,]/g, '');
+  newArr = newArr.split(' ').filter(item=>item !== '')
+  newArr = newArr.map(item=>Number(item))
+  newArr = newArr.filter(item=>!isNaN(item));
+  return (newArr.length === 0) ? [undefined, undefined] : [Math.min(...newArr), Math.max(...newArr)]
 };

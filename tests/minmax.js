@@ -32,4 +32,10 @@ QUnit.module('Тестируем функцию minmax', function () {
 	QUnit.test('minmax игнорирует обычный текст', function (assert) {
 		assert.deepEqual(minmax('1, -5.8 или 10, хотя 34 + -5.3 и 73'), [ -5.8, 73 ]);
 	});
+
+	QUnit.test('minmax игнорирует не строку и NaN', function (assert) {
+		assert.deepEqual(minmax([123, 353]), [ undefined, undefined ]);
+		assert.deepEqual(minmax([NaN, NaN, NaN]), [ undefined, undefined ]);
+		assert.deepEqual(minmax(NaN), [ undefined, undefined ]);
+	});
 });
