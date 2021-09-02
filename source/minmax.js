@@ -1,10 +1,11 @@
 'use strict';
 
 /**
- * Это описание функции minmax
+ * Возвращает минимальный и максимальный
+ * элемент в строке.
+ * 
  * @param {string} st - Строка с числами
- * @returns {array} Массив из минимального
- * и максимального элементов в строке
+ * @returns {array} Массив из минимального и максимального элементов в строке
  */
 const minmax = st => {
 
@@ -12,10 +13,10 @@ const minmax = st => {
     return [undefined, undefined];
   }
   
-  const formatedString = st.replace(/[\\,]/g, '');
-  const itemsArray = formatedString.split(' ').filter(item => item !== '');
-  const result = itemsArray.map(item => Number(item)).filter(item => !isNaN(item));
+  const stringWithoutCommas = st.replace(/[\\,]/g, '');
+  const fromStringToArray = stringWithoutCommas.split(' ').filter(item => item !== '');
+  const numbersArray = fromStringToArray.map(item => Number(item)).filter(item => !isNaN(item));
 
-  return (result.length === 0) ? [undefined, undefined] :
-    [Math.min(...result), Math.max(...result)];
+  return (numbersArray.length === 0) ? [undefined, undefined] :
+    [Math.min(...numbersArray), Math.max(...numbersArray)];
 }
